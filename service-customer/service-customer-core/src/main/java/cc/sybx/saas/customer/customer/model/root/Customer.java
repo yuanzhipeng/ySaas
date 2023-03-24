@@ -160,5 +160,5 @@ public class Customer implements Serializable {
      * 删除标志 0:未删除 1:已删除
      */
     @Column(name = "delete_flag")
-    private DeleteFlag deleteFlag;
+    private DeleteFlag delFlag;
 }

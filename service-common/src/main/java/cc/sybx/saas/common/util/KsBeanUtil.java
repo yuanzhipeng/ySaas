@@ -53,4 +53,15 @@ public class KsBeanUtil {
             }
         });
     }
+
+    /**
+     * 源对象和目标对象的浅拷贝
+     * 注意点：目标对象与源对象中的属性名称必须一致，否则无法拷贝
+     *
+     * @param sourceObj 源对象
+     * @param targetObj 目标对象
+     */
+    public static void copyPropertiesThird(Object sourceObj, Object targetObj) {
+        BeanUtils.copyProperties(sourceObj, targetObj);
+    }
 }

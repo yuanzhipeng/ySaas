@@ -80,6 +80,11 @@
             <artifactId>service-customer-api</artifactId>
             <version>${micro-service.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

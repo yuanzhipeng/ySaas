@@ -7,7 +7,7 @@ import cc.sybx.saas.redis.RedisHsetBean;
 import cc.sybx.saas.redis.RedisService;
 import cc.sybx.saas.saas.api.provider.DomainStoreRelaQueryProvider;
 import cc.sybx.saas.saas.api.request.DomainStoreRelaListRequest;
-import cc.sybx.saas.saas.api.response.DomainStoreRelaListResponse;
+import cc.sybx.saas.saas.api.response.domainstorerela.DomainStoreRelaListResponse;
 import cc.sybx.saas.saas.bean.vo.DomainStoreRelaVO;
 import cc.sybx.saas.setting.api.provider.AuditQueryProvider;
 import cc.sybx.saas.setting.api.request.ConfigQueryRequest;

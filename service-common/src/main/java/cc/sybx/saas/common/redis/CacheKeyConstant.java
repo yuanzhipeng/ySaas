@@ -18,6 +18,16 @@ public interface CacheKeyConstant {
     String MOBILE_SAAS_KEY = "MOBILE_SAAS_KEY";
 
     /**
+     * C 端用户登录发送验证码
+     */
+    String YZM_CUSTOMER_LOGIN = "YZM_CUSTOMER_LOGIN:";
+
+    /**
+     * 短信上一次发送时间的key
+     */
+    String YZM_MOBILE_LAST_TIME = "YZM_MOBILE_LAST_TIME:";
+
+    /**
      * redis 缓存saas域名配置信息, 提供给Nginx配置使用
      */
     String CACHE_PC_KEY_FOR_NGINX = "SAAS_PC_KEY";

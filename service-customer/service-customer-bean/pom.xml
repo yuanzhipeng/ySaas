@@ -29,6 +29,11 @@
             <artifactId>service-common</artifactId>
             <version>${micro-service.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

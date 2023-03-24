@@ -1,4 +1,4 @@
-package cc.sybx.saas.saas.api.response;
+package cc.sybx.saas.saas.api.response.domainstorerela;
 
 import cc.sybx.saas.saas.bean.vo.DomainStoreRelaVO;
 import io.swagger.annotations.ApiModel;

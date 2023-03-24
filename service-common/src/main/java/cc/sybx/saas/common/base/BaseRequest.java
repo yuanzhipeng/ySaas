@@ -16,7 +16,7 @@ public class BaseRequest implements Serializable {
     /**
      * 店铺ID Saas
      */
-    private Long storeIdAtSaas;
+    private Long storeIdAtSaaS;
 
     /**
      * 公司ID Saas

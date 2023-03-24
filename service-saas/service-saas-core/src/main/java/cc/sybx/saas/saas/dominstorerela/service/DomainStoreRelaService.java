@@ -1,5 +1,6 @@
 package cc.sybx.saas.saas.dominstorerela.service;
 
+import cc.sybx.saas.common.enums.DeleteFlag;
 import cc.sybx.saas.common.util.KsBeanUtil;
 import cc.sybx.saas.saas.api.request.domainstorerela.DomainStoreRelaQueryRequest;
 import cc.sybx.saas.saas.bean.vo.DomainStoreRelaVO;
@@ -33,5 +34,12 @@ public class DomainStoreRelaService {
             return domainStoreRelaVO;
         }
         return null;
+    }
+
+    /**
+     * 根据域名查询店铺信息
+     */
+    public DomainStoreRela findByDomain(String domain) {
+        return domainStoreRelaRepository.findByDomain(DeleteFlag.NO, domain).orElse(null);
     }
 }
