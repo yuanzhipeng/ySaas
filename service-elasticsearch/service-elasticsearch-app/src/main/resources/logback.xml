@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <contextName>y-service-elasticsearch</contextName>
+    <!-- 控制台日志输出，供本机联调使用 -->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+</configuration>
