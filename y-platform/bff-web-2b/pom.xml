@@ -31,6 +31,55 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons-pool2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cc.sybx.saas</groupId>
+            <artifactId>service-saas-api</artifactId>
+            <version>${micro-service.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cc.sybx.saas</groupId>
+            <artifactId>service-setting-api</artifactId>
+            <version>${micro-service.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cc.sybx.saas</groupId>
+            <artifactId>service-customer-api</artifactId>
+            <version>${micro-service.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
