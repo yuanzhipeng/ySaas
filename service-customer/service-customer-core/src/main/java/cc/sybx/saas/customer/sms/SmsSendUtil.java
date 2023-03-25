@@ -3,6 +3,7 @@ package cc.sybx.saas.customer.sms;
 import cc.sybx.saas.common.util.MQConstant;
 import cc.sybx.saas.customer.bean.enums.SmsTemplate;
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.binding.BinderAwareChannelResolver;
@@ -15,6 +16,7 @@ import java.util.Map;
 /**
  * 短信服务
  */
+@Slf4j
 @Component
 public class SmsSendUtil {
 
@@ -43,6 +45,7 @@ public class SmsSendUtil {
         paramsMap.put("templateParamDTO", dto);
         paramsMap.put("businessType", smsTemplate.name());
         paramsMap.put("phoneNumbers", StringUtils.join(phones,","));
-        resolver.resolveDestination(MQConstant.Q_SMS_SEND_CODE_MESSAGE_ADD).send(new GenericMessage<>(JSONObject.toJSONString(paramsMap)));
+//        resolver.resolveDestination(MQConstant.Q_SMS_SEND_CODE_MESSAGE_ADD).send(new GenericMessage<>(JSONObject.toJSONString(paramsMap)));
+        log.info("SmsSendUtil send sms login, sms is : ['{}'] ", JSONObject.toJSONString(paramsMap));
     }
 }

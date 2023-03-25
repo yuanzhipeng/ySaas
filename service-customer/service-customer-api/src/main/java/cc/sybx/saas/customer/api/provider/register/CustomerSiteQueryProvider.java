@@ -1,7 +1,9 @@
 package cc.sybx.saas.customer.api.provider.register;
 
 import cc.sybx.saas.common.base.BaseResponse;
+import cc.sybx.saas.customer.api.reponse.login.CustomerLoginResponse;
 import cc.sybx.saas.customer.api.reponse.register.CustomerByAccountResponse;
+import cc.sybx.saas.customer.api.request.login.CustomerLoginRequest;
 import cc.sybx.saas.customer.api.request.register.CustomerByAccountRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,9 @@ import javax.validation.Valid;
 
 @FeignClient(value = "${application.customer.name}", contextId = "CustomerSiteQueryProvider")
 public interface CustomerSiteQueryProvider {
+
+    @PostMapping("/customer/${application.customer.version}/login")
+    BaseResponse<CustomerLoginResponse> login(@RequestBody @Valid CustomerLoginRequest customerLoginRequest);
 
     /**
      * 根据账号查询用户信息

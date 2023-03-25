@@ -19,6 +19,7 @@ import cc.sybx.saas.customer.bean.enums.CustomerStatus;
 import cc.sybx.saas.customer.bean.enums.SmsTemplate;
 import cc.sybx.saas.customer.bean.vo.CustomerDetailVO;
 import cc.sybx.saas.util.CommonUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 @RestController
+@RequestMapping
+@Api(tags = "SmsBaseController [短信控制器]")
 public class SmsBaseController {
     @Resource
     private CommonUtil commonUtil;

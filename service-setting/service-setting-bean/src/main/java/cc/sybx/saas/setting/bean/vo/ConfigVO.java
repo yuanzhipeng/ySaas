@@ -5,7 +5,6 @@ import cc.sybx.saas.common.util.CustomLocalDateTimeDeserializer;
 import cc.sybx.saas.common.util.CustomLocalDateTimeSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -83,7 +82,6 @@ public class ConfigVO implements Serializable {
      * 删除标记
      */
     @ApiModelProperty(value = "删除标记", dataType = "cc.sybx.saas.common.enums.DeleteFlag")
-    @NotNull
     private DeleteFlag delFlag;
 
     @ApiModelProperty(value = "品牌商城ID")

@@ -16,4 +16,28 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>cc.sybx.saas</groupId>
+            <artifactId>service-common</artifactId>
+            <version>${micro-service.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cc.sybx.saas</groupId>
+            <artifactId>service-customer-bean</artifactId>
+            <version>${micro-service.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

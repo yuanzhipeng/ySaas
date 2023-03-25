@@ -17,7 +17,7 @@ public class CustomerDetailService {
      * @param customerDetailId
      * @return
      */
-    public CustomerDetail findOne(String customerDetailId) {
-        return customerDetailRepository.findByCustomerDetailId(customerDetailId);
+    public CustomerDetail findByCustomerId(String customerDetailId) {
+        return customerDetailRepository.findByCustomerId(customerDetailId);
     }
 }

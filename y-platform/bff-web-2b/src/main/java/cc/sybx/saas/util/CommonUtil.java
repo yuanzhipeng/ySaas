@@ -5,16 +5,26 @@ import cc.sybx.saas.common.redis.CacheKeyConstant;
 import cc.sybx.saas.common.util.CommonErrorCode;
 import cc.sybx.saas.common.util.Constants;
 import cc.sybx.saas.common.util.HttpUtil;
+import cc.sybx.saas.common.util.MD5Util;
+import cc.sybx.saas.customer.bean.vo.CustomerVO;
+import cc.sybx.saas.customer.response.LoginResponse;
 import cc.sybx.saas.saas.api.provider.DomainStoreRelaQueryProvider;
 import cc.sybx.saas.saas.api.request.domainstorerela.DomainStoreRelaByDomainRequest;
 import cc.sybx.saas.saas.api.response.domainstorerela.DomainStoreRelaByDomainResponse;
 import cc.sybx.saas.saas.bean.vo.DomainStoreRelaVO;
 import com.alibaba.fastjson.JSONObject;
+import io.jsonwebtoken.CompressionCodecs;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Slf4j
@@ -22,6 +32,8 @@ import java.util.*;
 public class CommonUtil {
     @Resource
     private RedisService redisService;
+    @Value("jwt.secret-key")
+    private String jwtSecretKey;
     @Resource
     private DomainStoreRelaQueryProvider domainStoreRelaQueryProvider;
 
@@ -58,6 +70,15 @@ public class CommonUtil {
             return domainStoreRelaVO.getStoreId();
         }
         return Constants.BOSS_DEFAULT_STORE_ID;
+    }
+
+    /**
+     * 获取当前品牌商城Id
+     *
+     * @return
+     */
+    public DomainStoreRelaVO getDomainInfo() {
+        return getDomainInfo("");
     }
 
     /**
@@ -181,5 +202,59 @@ public class CommonUtil {
             return JSONObject.parseObject(info, DomainStoreRelaVO.class);
         }
         throw new SaasRuntimeException(CommonErrorCode.METHOD_NOT_ALLOWED);
+    }
+
+
+    /**
+     * 拼接登录后返回值
+     *
+     * @param customer
+     * @return
+     */
+    public LoginResponse getLoginResponse(CustomerVO customer) {
+        Date date = new Date();
+        String token = Jwts.builder().setSubject(customer.getCustomerAccount())
+                .compressWith(CompressionCodecs.DEFLATE)
+                .signWith(SignatureAlgorithm.HS256, jwtSecretKey)
+                .setIssuedAt(date)
+                .claim("customerId", customer.getCustomerId())
+                .claim("customerAccount", customer.getCustomerAccount())
+                .claim("customerName", customer.getCustomerDetail().getCustomerName())
+                .claim("customerDetailId", customer.getCustomerDetail().getCustomerDetailId())
+                .claim("ip", customer.getLoginIp())
+                .claim("storeId", customer.getStoreId())
+                .claim("terminalToken", MD5Util.md5Hex(customer.getCustomerId() + date.getTime() + RandomStringUtils.randomNumeric(4)))
+                .claim("firstLogin", Objects.isNull(customer.getLoginTime()))//是否首次登陆
+                .setExpiration(DateUtils.addMonths(date, 1))
+                .compact();
+        //redis保存token,并且7天后过期
+        redisService.setString(CacheKeyConstant.JSON_WEB_TOKEN.concat(token),token,60L*60*60*24*7);
+
+        return LoginResponse.builder()
+                .accountName(customer.getCustomerAccount())
+                .customerId(customer.getCustomerId())
+                .token(token)
+                .checkState(customer.getCheckState().toValue())
+                .customerDetail(customer.getCustomerDetail())
+                .build();
+    }
+
+    /**
+     * 获取jwtToken
+     *
+     * @return
+     */
+    public String getToken(HttpServletRequest request) {
+
+        String jwtHeaderKey = "Authorization";
+        String jwtHeaderPrefix = "Bearer ";
+
+        String authHeader = request.getHeader(jwtHeaderKey);
+
+        //当token失效,直接返回失败
+        if (authHeader != null && authHeader.length() > 16) {
+            return authHeader.substring(jwtHeaderPrefix.length());
+        }
+        return null;
     }
 }

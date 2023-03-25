@@ -23,6 +23,16 @@ public interface CacheKeyConstant {
     String YZM_CUSTOMER_LOGIN = "YZM_CUSTOMER_LOGIN:";
 
     /**
+     * 短信验证码的key 注册
+     */
+    String VERIFY_CODE_KEY = "YZM_SMS_KEY:";
+
+    /**
+     * 注册错误次数KEY
+     */
+    String REGISTER_ERR = "REGISTER_ERR:";
+
+    /**
      * 短信上一次发送时间的key
      */
     String YZM_MOBILE_LAST_TIME = "YZM_MOBILE_LAST_TIME:";
@@ -46,4 +56,16 @@ public interface CacheKeyConstant {
      * redis 缓存自定义全域名配置信息, 提供给Nginx配置使用
      */
     String CACHE_MOBILE_FULL_KEY_FOR_NGINX = "SAAS_MOBILE_KEY_FULL";
+
+    String JSON_WEB_TOKEN = "JSON_WEB_TOKEN:";
+
+    /**
+     * 登录错误次数KEY
+     */
+    String LOGIN_ERR = "LOGIN_ERR:";
+
+    /**
+     * 平台 登录错误5次，账号锁定时间KEY
+     */
+    String SAAS_BOSS_LOCK_TIME = "SAAS_BOSS_LOCK_TIME:";
 }

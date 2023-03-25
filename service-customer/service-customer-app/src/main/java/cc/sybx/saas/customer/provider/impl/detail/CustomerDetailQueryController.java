@@ -23,7 +23,7 @@ public class CustomerDetailQueryController implements CustomerDetailQueryProvide
     @Override
     public BaseResponse<CustomerDetailGetWithNotDeleteByCustomerIdResponse> getCustomerDetailWithNotDeleteByCustomerId(CustomerDetailWithNotDeleteByCustomerIdRequest request) {
         CustomerDetailGetWithNotDeleteByCustomerIdResponse response = new CustomerDetailGetWithNotDeleteByCustomerIdResponse();
-        wrapperVO(customerDetailService.findOne(response.getCustomerDetailId()), response);
+        wrapperVO(customerDetailService.findByCustomerId(request.getCustomerId()), response);
         return BaseResponse.success(response);
     }
 

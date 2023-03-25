@@ -1,5 +1,7 @@
 package cc.sybx.saas.customer.redis;
 
+import cc.sybx.saas.common.exception.SaasRuntimeException;
+import cc.sybx.saas.common.util.CommonErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -81,5 +83,33 @@ public class RedisService {
             log.error("putString value to redis fail...", e);
         }
         return false;
+    }
+
+    /**
+     * 从redis 中查询字符串对象
+     */
+    public String getString(final String key) {
+        try {
+            return redisTemplate.execute((RedisCallback<String>) connection -> {
+                byte[] bytes = connection.get(redisTemplate.getStringSerializer().serialize(key));
+                return null != bytes ? redisTemplate.getStringSerializer().deserialize(bytes) : null;
+            });
+        } catch (Exception e) {
+            throw new SaasRuntimeException(CommonErrorCode.FAILED);
+        }
+    }
+
+    /**
+     * 根据key删除缓存
+     *
+     * @param key
+     * @return
+     */
+    public void delete(final String key) {
+        try {
+            redisTemplate.delete(key);
+        } catch (Exception e) {
+            log.error("Delete cache fail and key : {}", key);
+        }
     }
 }

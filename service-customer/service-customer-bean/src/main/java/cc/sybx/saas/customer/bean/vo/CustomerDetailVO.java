@@ -25,8 +25,6 @@ import java.time.LocalDateTime;
 @ApiModel
 public class CustomerDetailVO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     /**
      * 会员详细信息标识UUID
      */

@@ -1,8 +1,10 @@
 package cc.sybx.saas.customer.api.provider.register;
 
 import cc.sybx.saas.common.base.BaseResponse;
+import cc.sybx.saas.customer.api.reponse.register.CustomerRegisterResponse;
 import cc.sybx.saas.customer.api.reponse.register.CustomerSendMobileCodeResponse;
 import cc.sybx.saas.customer.api.reponse.register.CustomerValidateSendMobileCodeResponse;
+import cc.sybx.saas.customer.api.request.register.CustomerRegisterRequest;
 import cc.sybx.saas.customer.api.request.register.CustomerSendMobileCodeRequest;
 import cc.sybx.saas.customer.api.request.register.CustomerValidateSendMobileCodeRequest;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -35,4 +37,13 @@ public interface CustomerSiteProvider {
      */
     @PostMapping("/customer/${application.customer.version}/send-mobile-code")
     BaseResponse<CustomerSendMobileCodeResponse> sendMobileCode(@RequestBody @Valid CustomerSendMobileCodeRequest customerSendMobileCodeRequest);
+
+    /**
+     * 会员注册
+     *
+     * @param customerRegisterRequest {@link CustomerRegisterRequest}
+     * @return 会员注册结果 {@link CustomerRegisterResponse}
+     */
+    @PostMapping("/customer/${application.customer.version}/register")
+    BaseResponse<CustomerRegisterResponse> register(@RequestBody @Valid CustomerRegisterRequest customerRegisterRequest);
 }

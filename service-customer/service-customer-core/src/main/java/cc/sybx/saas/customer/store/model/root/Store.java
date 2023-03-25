@@ -215,7 +215,7 @@ public class Store implements Serializable {
     private String supplierPinyinName;
 
     /**
-     * 商家来源类型 0:商城入驻 1:linkMall初始化
+     * 商家来源类型 0:商城入驻
      */
     @Enumerated
     @Column(name = "company_source_type")

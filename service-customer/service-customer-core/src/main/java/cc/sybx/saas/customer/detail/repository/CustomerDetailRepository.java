@@ -12,10 +12,9 @@ public interface CustomerDetailRepository extends JpaRepository<CustomerDetail, 
 
     /**
      * 根据会员详情ID查询会员详情信息
-     *
-     * @param customerDetailId
+     * @param customerId
      * @return
      */
-    @Query("from CustomerDetail c where c.delFlag = 0 and c.customerDetailId = :customerDetailId")
-    CustomerDetail findByCustomerDetailId(@Param("customerDetailId") String customerDetailId);
+    @Query("from CustomerDetail c where c.delFlag = 0 and c.customerId = :customerId")
+    CustomerDetail findByCustomerId(@Param("customerId") String customerId);
 }

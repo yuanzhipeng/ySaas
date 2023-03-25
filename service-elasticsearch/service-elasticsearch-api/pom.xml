@@ -16,4 +16,17 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cc.sybx.saas</groupId>
+            <artifactId>service-elasticsearch-bean</artifactId>
+            <version>${micro-service.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

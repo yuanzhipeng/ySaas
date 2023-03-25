@@ -11,6 +11,7 @@ import org.springframework.util.CollectionUtils;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Component
@@ -30,6 +31,19 @@ public class RedisService {
                 return Boolean.TRUE;
             });
         } catch (Exception e) {
+            log.error("putString value to redis fail...", e);
+        }
+        return false;
+    }
+
+    public boolean setString(final String key, final String value, final long seconds){
+        try{
+            return redisTemplate.execute((RedisCallback<Boolean>) redisConnection -> {
+                redisConnection.setEx(redisTemplate.getStringSerializer().serialize(key),
+                        seconds, redisTemplate.getStringSerializer().serialize(value));
+                return Boolean.TRUE;
+            });
+        }catch (Exception e){
             log.error("putString value to redis fail...", e);
         }
         return false;
@@ -93,5 +107,32 @@ public class RedisService {
             log.error("hget value from redis fail...", e);
         }
         return null;
+    }
+
+    /**
+     * 对存储在指定key的数值执行原子的加1操作
+     *
+     * @param key key
+     * @return
+     */
+    public Long incrKey(String key) {
+        return redisTemplate.execute((RedisCallback<Long>) connection ->
+                connection.incr(redisTemplate.getStringSerializer().serialize(key))
+        );
+    }
+
+    /**
+     * 以秒为单位设置key的超时时间
+     *
+     * @param key        key
+     * @param expireTime 超时时间
+     * @return boolean
+     */
+    public boolean expireBySeconds(String key, Long expireTime) {
+        return redisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
+    }
+
+    public boolean hasKey(final String key) {
+        return redisTemplate.hasKey(key);
     }
 }

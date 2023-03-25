@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.data.convert.Jsr310Converters;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
@@ -110,6 +109,12 @@ public class Customer implements Serializable {
     @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
     @JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
     private LocalDateTime loginTime;
+
+    /**
+     * 密码错误次数
+     */
+    @Column(name = "login_error_time")
+    private Integer loginErrorCount = 0;
 
     /**
      * 创建时间/注册时间

@@ -221,7 +221,7 @@ public class CompanyInfo implements Serializable {
     /**
      * 删除标志 0未删除 1已删除
      */
-    @Column(name = "del_flag")
+    @Column(name = "delete_flag")
     @Enumerated
     private DeleteFlag delFlag;
 
