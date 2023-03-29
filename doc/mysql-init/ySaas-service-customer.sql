@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50724
  Source Host           : 192.168.31.106:3306
- Source Schema         : y-customer
+ Source Schema         : ySaas-service-customer
 
  Target Server Type    : MySQL
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 25/03/2023 23:54:58
+ Date: 29/03/2023 14:37:35
 */
 
 SET NAMES utf8mb4;
@@ -62,7 +62,7 @@ CREATE TABLE `company_info` (
 -- Records of company_info
 -- ----------------------------
 BEGIN;
-INSERT INTO `company_info` VALUES (-1, '公司名称1', '[{\"lastModified\":1506752290000,\"lastModifiedDate\":\"2017-09-30T06:18:10.000Z\",\"name\":\"122.jpg\",\"size\":33373,\"type\":\"image/jpeg\",\"uid\":\"rc-upload-1510902118991-8\",\"percent\":100,\"originFileObj\":{\"uid\":\"rc-upload-1510902118991-8\"},\"status\":\"done\",\"response\":[\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201711171502368366\"],\"thumbUrl\":\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201711171502368366\"}]', 2, NULL, NULL, NULL, NULL, '测试数据', NULL, NULL, NULL, '', '2017-12-01 10:35:49', '2017-11-25 10:09:08', NULL, NULL, '123456789012344', '12', 123.00, NULL, '2017-11-08 00:00:00', '2017-11-18 00:00:00', '什么都卖122233333', '[{\"lastModified\":1508839111000,\"lastModifiedDate\":\"2017-10-24T09:58:31.000Z\",\"name\":\"1024.png\",\"size\":51615,\"type\":\"image/png\",\"uid\":\"rc-upload-1511418994148-4\",\"percent\":100,\"originFileObj\":{\"uid\":\"rc-upload-1511418994148-4\"},\"status\":\"done\",\"response\":[\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201711231436404678\"],\"thumbUrl\":\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201711231436404678\"}]', '[{\"uid\":\"rc-upload-1504848759548-9\",\"status\":\"done\",\"url\":\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201709081335501812\"}]', '00002', '测试公司', '2017-09-12 19:19:27', NULL, 0, 0);
+INSERT INTO `company_info` VALUES (-1, '公司名称1', '[{\"lastModified\":1506752290000,\"lastModifiedDate\":\"2017-09-30T06:18:10.000Z\",\"name\":\"122.jpg\",\"size\":33373,\"type\":\"image/jpeg\",\"uid\":\"rc-upload-1510902118991-8\",\"percent\":100,\"originFileObj\":{\"uid\":\"rc-upload-1510902118991-8\"},\"status\":\"done\",\"response\":[\"https://ySaas-b2b.oss-cn-shanghai.aliyuncs.com/201711171502368366\"],\"thumbUrl\":\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201711171502368366\"}]', 2, NULL, NULL, NULL, NULL, '测试数据', NULL, NULL, NULL, '', '2017-12-01 10:35:49', '2017-11-25 10:09:08', NULL, NULL, '123456789012344', '12', 123.00, NULL, '2017-11-08 00:00:00', '2017-11-18 00:00:00', '什么都卖122233333', '[{\"lastModified\":1508839111000,\"lastModifiedDate\":\"2017-10-24T09:58:31.000Z\",\"name\":\"1024.png\",\"size\":51615,\"type\":\"image/png\",\"uid\":\"rc-upload-1511418994148-4\",\"percent\":100,\"originFileObj\":{\"uid\":\"rc-upload-1511418994148-4\"},\"status\":\"done\",\"response\":[\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201711231436404678\"],\"thumbUrl\":\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201711231436404678\"}]', '[{\"uid\":\"rc-upload-1504848759548-9\",\"status\":\"done\",\"url\":\"https://wanmi-b2b.oss-cn-shanghai.aliyuncs.com/201709081335501812\"}]', '00002', '测试公司', '2017-09-12 19:19:27', NULL, 0, 0);
 COMMIT;
 
 -- ----------------------------

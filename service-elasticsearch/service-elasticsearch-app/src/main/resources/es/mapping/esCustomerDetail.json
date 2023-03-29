@@ -1,0 +1,139 @@
+{
+  "properties": {
+    "customerAddress": {
+      "index": false,
+      "type": "text"
+    },
+    "enterpriseInfo": {
+      "type": "nested",
+      "properties": {
+        "businessIndustryType": {
+          "type": "integer"
+        },
+        "businessNatureType": {
+          "type": "integer"
+        },
+        "businessEmployeeNum": {
+          "type": "integer"
+        },
+        "customerId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "ignore_above": 256,
+              "type": "keyword"
+            }
+          }
+        },
+        "enterpriseName": {
+          "type": "keyword"
+        },
+        "socialCreditCode": {
+          "type": "keyword"
+        }
+      }
+    },
+    "esStoreCustomerRelaList": {
+      "type": "nested",
+      "properties": {
+        "customerType": {
+          "type": "integer"
+        },
+        "companyInfoId": {
+          "type": "long"
+        },
+        "customerId": {
+          "type": "keyword"
+        },
+        "storeLevelId": {
+          "type": "long"
+        },
+        "employeeId": {
+          "type": "keyword"
+        },
+        "id": {
+          "type": "keyword"
+        },
+        "storeId": {
+          "type": "long"
+        }
+      }
+    },
+    "isDistributor": {
+      "type": "integer"
+    },
+    "enterpriseCheckState": {
+      "type": "integer"
+    },
+    "contactName": {
+      "type": "keyword"
+    },
+    "customerLevelId": {
+      "type": "long"
+    },
+    "pointsAvailable": {
+      "type": "long"
+    },
+    "employeeId": {
+      "type": "keyword"
+    },
+    "cityId": {
+      "type": "long"
+    },
+    "provinceId": {
+      "type": "long"
+    },
+    "customerName": {
+      "type": "keyword"
+    },
+    "enterpriseCheckReason": {
+      "index": false,
+      "type": "text"
+    },
+    "customerStatus": {
+      "type": "integer"
+    },
+    "areaId": {
+      "type": "long"
+    },
+    "rejectReason": {
+      "index": false,
+      "type": "text"
+    },
+    "createTime": {
+      "format": "yyyy-MM-dd HH:mm:ss.SSS",
+      "type": "date"
+    },
+    "forbidReason": {
+      "index": false,
+      "type": "text"
+    },
+    "checkState": {
+      "type": "integer"
+    },
+    "customerId": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "ignore_above": 256,
+          "type": "keyword"
+        }
+      }
+    },
+    "contactPhone": {
+      "type": "keyword"
+    },
+    "customerAccount": {
+      "type": "keyword"
+    },
+    "streetId": {
+      "type": "long"
+    },
+    "customerType": {
+      "type": "long"
+    },
+    "storeId": {
+      "type": "long"
+    }
+  }
+}

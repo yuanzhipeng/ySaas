@@ -1,13 +1,9 @@
 package cc.sybx.saas.customer.sms;
 
-import cc.sybx.saas.common.util.MQConstant;
 import cc.sybx.saas.customer.bean.enums.SmsTemplate;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.binding.BinderAwareChannelResolver;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -20,8 +16,8 @@ import java.util.Map;
 @Component
 public class SmsSendUtil {
 
-    @Autowired
-    private BinderAwareChannelResolver resolver;
+//    @Resource
+//    private BinderAwareChannelResolver resolver;
 
     /**
      * 发送短信

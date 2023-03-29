@@ -2,6 +2,7 @@ package cc.sybx.saas.customer.customer.repository;
 
 import cc.sybx.saas.common.enums.DeleteFlag;
 import cc.sybx.saas.customer.customer.model.root.Customer;
+import cc.sybx.saas.customer.customer.model.root.CustomerBase;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -10,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, String>, JpaSpecificationExecutor<Customer> {
@@ -60,4 +62,15 @@ public interface CustomerRepository extends JpaRepository<Customer, String>, Jpa
     @Query("update Customer e set e.loginTime = ?2, e.loginErrorCount = 0, e.loginLockTime = null, e.loginIp = ?3 " +
             "where e.customerId =?1")
     int updateLoginTime(String customerId, LocalDateTime loginTime, String loginIp);
+
+    /**
+     * 根据会员ID查询会员账号、审核状态、企业会员状态、驳回原因
+     *
+     * @param customerIds
+     * @return
+     */
+    @Query("select new cc.sybx.saas.customer.customer.model.root.CustomerBase(c.storeId, c.customerId,c.customerAccount, c.checkState) " +
+            " FROM Customer c" +
+            " where  c.customerId in :customerIds ")
+    List<CustomerBase> findCustomerBaseByCustomerIds(@Param("customerIds") List<String> customerIds);
 }
