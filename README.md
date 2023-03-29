@@ -1,4 +1,5 @@
 # ySaas
+   一个简单的Saas化系统框架, 可根据需要新建、自定义微服务
 
 ## 技术栈 
     开发环境使用 com.alibaba.druid.pool.DruidDataSource 数据池, 可以通过监控页面获取数据库使用情况, 更好的使用、优化系统
@@ -57,5 +58,28 @@
    oss-sdk : 云存储SDK(aliyun、腾讯、华为、minio、hdfs、fastFDS等)
    pay-sdk : 支付sdk 封装
 
+## wrk 不严谨测试
+    在同一台机器下,单节点('/system/baseConfig' 增加多级缓存架构)wrk 测试命令如下：
+   ```shell
+      wrk -t12 -c400 -d30s --latency http://local.saas.sybx.com:8082/system/baseConfig
+   ```
+ 测试结果如下:
+   ```
+      Running 30s test @ http://local.saas.sybx.com:8082/system/baseConfig
+        12 threads and 400 connections
+        Thread Stats   Avg      Stdev     Max   +/- Stdev
+          Latency   153.52ms   93.15ms   1.33s    94.02%
+          Req/Sec   217.17     72.11   370.00     73.34%
+        Latency Distribution
+           50%  141.04ms
+           75%  177.75ms
+           90%  218.69ms
+           99%  556.93ms
+        77751 requests in 30.05s, 813.80MB read
+        Socket errors: connect 0, read 0, write 0, timeout 39
+      Requests/sec:   2587.42
+      Transfer/sec:     27.08MB
+
+   ```
 
 ## 某些高并发的请求、配置需要与mysql结偶, 初始化、新增完成后, 及时推送到redis(必要时候需要使用redisCluster)缓存中, 如果qps过高,连接redis获取重复高频的数据,也是对带宽、性能的浪费, 可是适时的引入多级缓存架构(Guava、Caffeine); 
