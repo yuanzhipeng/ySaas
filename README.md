@@ -56,3 +56,6 @@
    micro-service : 自定义autoConfig
    oss-sdk : 云存储SDK(aliyun、腾讯、华为、minio、hdfs、fastFDS等)
    pay-sdk : 支付sdk 封装
+
+
+## 某些高并发的请求、配置需要与mysql结偶, 初始化、新增完成后, 及时推送到redis(必要时候需要使用redisCluster)缓存中, 如果qps过高,连接redis获取重复高频的数据,也是对带宽、性能的浪费, 可是适时的引入多级缓存架构(Guava、Caffeine); 
