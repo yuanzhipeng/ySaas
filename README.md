@@ -59,7 +59,7 @@
    pay-sdk : 支付sdk 封装
 
 ## wrk 不严谨测试
-    在同一台机器下,单节点('/system/baseConfig' 增加多级缓存架构)wrk 测试命令如下：
+    在同一台机器下,单节点('/system/baseConfig' 增加了简单的多级缓存架构)wrk 测试命令如下：
    ```shell
       wrk -t12 -c400 -d30s --latency http://local.saas.sybx.com:8082/system/baseConfig
    ```
